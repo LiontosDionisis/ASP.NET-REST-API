@@ -33,7 +33,7 @@ namespace RESTAPI.DTO
 
         public override string? ToString()
         {
-            return $"{Username} {Firstname} {Lastname} {Email} {Password} {PhoneNumber} {Institution} {UserRole!.Value}";
+            return $"{Username} {Firstname} {Lastname} {Email} {Password} {PhoneNumber} {UserRole!.Value}";
         }
     }
 }

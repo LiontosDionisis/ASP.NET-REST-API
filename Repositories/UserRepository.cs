@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using RESTAPI.Data;
 using RESTAPI.Security;
 
@@ -6,7 +7,7 @@ namespace RESTAPI.Repositories
 {
     public class UserRepository : BaseRepository<User>, IUserRepository
     {
-        public UserRepository(UsersTeachersAPITestDbContext context) : base(context) { }
+        public UserRepository(UsersTeachersAPITestDbContext context, IMapper _mapper) : base(context) { }
 
         public async Task<List<User>> GetAllUsersFilteredAsync(int pageNumber, int pageSize, List<Func<User, bool>> predicates)
         {
