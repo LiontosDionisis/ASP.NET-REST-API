@@ -1,4 +1,8 @@
 
+using Microsoft.EntityFrameworkCore;
+using RESTAPI.Data;
+using Serilog;
+
 namespace RESTAPI
 {
     public class Program
@@ -6,6 +10,15 @@ namespace RESTAPI
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Host.UseSerilog((context, config) =>
+            {
+                config.ReadFrom.Configuration(context.Configuration);
+            });
+
+            var connString = builder.Configuration.GetConnectionString("DefaultConnection");
+            builder.Services.AddDbContext<UsersTeachersAPITestDbContext>(options => options.UseSqlServer(connString));
+            //builder.Services.AddScoped<IApplicationService, ApplicationService>();
+            //builder.Services.AddRepositories();
 
             // Add services to the container.
 
