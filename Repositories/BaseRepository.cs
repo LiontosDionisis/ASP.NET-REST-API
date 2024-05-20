@@ -9,7 +9,7 @@ namespace RESTAPI.Repositories
         protected readonly UsersTeachersAPITestDbContext _context;
         private readonly DbSet<T> _dbSet;
 
-        public BaseRepository(UsersTeachersAPITestDbContext context, DbSet<T> dbSet)
+        public BaseRepository(UsersTeachersAPITestDbContext context)
         {
             _context = context;
             _dbSet = _context.Set<T>();
